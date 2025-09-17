@@ -8,89 +8,49 @@ namespace Library
 {
     internal class Library
     {
-        private Book[] books = new Book[100];
-        private int currentBookCount = 0;
-
-        private Book[] borrowedBooks = new Book[50];
-        private int currentBorrowedBookCount = 0;
+        private List<Book> books = new List<Book>();
+        private List<Book> borrowedBooks = new List<Book>();
 
         public void Add(Book book)
         {
-            if (currentBookCount < books.Length)
-            {
-                books[currentBookCount] = book;
-                currentBookCount++;
-                Console.WriteLine("Book added successfully");
-            }
-            else
-            {
-                Console.WriteLine("The library is full, you can't add more books");
-            }
+            books.Add(book);
+            Console.WriteLine("Book added successfully");
         }
 
         public void Remove(Book book)
         {
-            for (int i = 0; i < currentBookCount; i++)
-            {
-                if (books[i] != null && books[i].Equals(book))
-                {
-                    for (int j = i; j < currentBookCount - 1; j++)
-                    {
-                        books[j] = books[j + 1];
-                    }
-                    books[currentBookCount - 1] = null;
-                    currentBookCount--;
-
-                    Console.WriteLine("Book removed successfully");
-                    return;
-                }
-            }
-            Console.WriteLine("Book not found");
+            if (books.Remove(book))
+                Console.WriteLine("Book removed successfully");
+            else
+                Console.WriteLine("Book not found");
         }
 
         public void Display()
         {
-            if (currentBookCount == 0)
+            if (books.Count == 0)
             {
                 Console.WriteLine("No books in the library");
                 return;
             }
 
-            for (int i = 0; i < currentBookCount; i++)
+            foreach (var book in books)
             {
-                Console.WriteLine($"{books[i].Title} - {books[i].Author} ({books[i].PublishYear})");
+                Console.WriteLine($"{book.Title} - {book.Author} ({book.PublishYear})");
             }
         }
 
         public void BorrowBook(Book book)
         {
-            for (int i = 0; i < currentBookCount; i++)
+            if (books.Contains(book))
             {
-                if (books[i] != null && books[i].Equals(book))
-                {
-                    if (currentBorrowedBookCount < borrowedBooks.Length)
-                    {
-                        borrowedBooks[currentBorrowedBookCount] = books[i];
-                        currentBorrowedBookCount++;
-
-                        for (int j = i; j < currentBookCount - 1; j++)
-                        {
-                            books[j] = books[j + 1];
-                        }
-                        books[currentBookCount - 1] = null;
-                        currentBookCount--;
-
-                        Console.WriteLine("Book borrowed successfully");
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, borrowing list is full");
-                        return;
-                    }
-                }
+                books.Remove(book);
+                borrowedBooks.Add(book);
+                Console.WriteLine("Book borrowed successfully");
             }
-            Console.WriteLine("Book not found in the library");
+            else
+            {
+                Console.WriteLine("Book not found in the library");
+            }
         }
     }
 }
