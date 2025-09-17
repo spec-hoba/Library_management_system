@@ -9,8 +9,9 @@ namespace Library
     internal class Library
     {
         private Book[] books = new Book[100];
-        private int currentBookCount = 0 ;
-        private Book[] Borrowedbooks = new Book[50];
+        private int currentBookCount = 0;
+
+        private Book[] borrowedBooks = new Book[50];
         private int currentBorrowedBookCount = 0;
 
         public void Add(Book book)
@@ -19,22 +20,20 @@ namespace Library
             {
                 books[currentBookCount] = book;
                 currentBookCount++;
-                Console.WriteLine("book added sucessfully");
-
+                Console.WriteLine("Book added successfully");
             }
             else
-                Console.WriteLine("the library is full , you can't add more books");
+            {
+                Console.WriteLine("The library is full, you can't add more books");
+            }
         }
+
         public void Remove(Book book)
         {
             for (int i = 0; i < currentBookCount; i++)
             {
-                if (books[i] != null &&
-                    books[i].Title == book.Title &&
-                    books[i].Author == book.Author &&
-                    books[i].PublishYear == book.PublishYear)
+                if (books[i] != null && books[i].Equals(book))
                 {
-                    // نزحلق العناصر
                     for (int j = i; j < currentBookCount - 1; j++)
                     {
                         books[j] = books[j + 1];
@@ -42,31 +41,36 @@ namespace Library
                     books[currentBookCount - 1] = null;
                     currentBookCount--;
 
-                    Console.WriteLine("book removed successfully");
+                    Console.WriteLine("Book removed successfully");
                     return;
                 }
             }
-            Console.WriteLine("book not found");
+            Console.WriteLine("Book not found");
         }
+
         public void Display()
         {
-           for (int  i = 0; i < currentBookCount; i++)
+            if (currentBookCount == 0)
             {
-                Console.WriteLine(books[i].Title);
+                Console.WriteLine("No books in the library");
+                return;
+            }
+
+            for (int i = 0; i < currentBookCount; i++)
+            {
+                Console.WriteLine($"{books[i].Title} - {books[i].Author} ({books[i].PublishYear})");
             }
         }
+
         public void BorrowBook(Book book)
         {
             for (int i = 0; i < currentBookCount; i++)
             {
-                if (books[i] != null &&
-                    books[i].Title == book.Title &&
-                    books[i].Author == book.Author &&
-                    books[i].PublishYear == book.PublishYear)
+                if (books[i] != null && books[i].Equals(book))
                 {
-                    if (currentBorrowedBookCount < Borrowedbooks.Length)
+                    if (currentBorrowedBookCount < borrowedBooks.Length)
                     {
-                        Borrowedbooks[currentBorrowedBookCount] = books[i];
+                        borrowedBooks[currentBorrowedBookCount] = books[i];
                         currentBorrowedBookCount++;
 
                         for (int j = i; j < currentBookCount - 1; j++)
@@ -79,7 +83,7 @@ namespace Library
                         Console.WriteLine("Book borrowed successfully");
                         return;
                     }
-                    else  
+                    else
                     {
                         Console.WriteLine("Sorry, borrowing list is full");
                         return;
@@ -87,10 +91,6 @@ namespace Library
                 }
             }
             Console.WriteLine("Book not found in the library");
-      
-        
-        
-        
         }
     }
 }

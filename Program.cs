@@ -4,59 +4,63 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("welcome to the library management system");
+            Console.WriteLine("Welcome to the Library Management System");
             Library library = new Library();
 
             while (true) // Main Menu loop
             {
-                Console.WriteLine("if you a regular user enter (R) , if you are librarian enter (L), to exit (E)");
+                Console.WriteLine("If you are a regular user enter (R), if you are librarian enter (L), to exit (E): ");
                 char userType = Console.ReadLine().ToUpper()[0];
 
                 if (userType == 'L')
                 {
-                    Console.Write(" what is your name ? :  ");
+                    Console.Write("What is your name? : ");
                     string librarianName = Console.ReadLine();
-                    Librarian l1 = new Librarian(librarianName);
-                    Console.WriteLine($"welcome ya {l1.Name}");
+                    Librarian librarian = new Librarian(librarianName);
+                    Console.WriteLine($"Welcome, {librarian.Name}!");
 
                     while (true) // Librarian loop
                     {
-                        Console.Write(" Add book (A) , remove book (R) , Display books (D) , to back and choose role again (B): ");
+                        Console.Write("Add book (A), Remove book (R), Display books (D), Back (B): ");
                         char choice = Console.ReadLine().ToUpper()[0];
 
                         switch (choice)
                         {
                             case 'A':
-                                Console.WriteLine("enter book details");
-                                string bookName = Console.ReadLine();
+                                Console.WriteLine("Enter book details: ");
+                                string title = Console.ReadLine();
                                 string author = Console.ReadLine();
-                                int bookYear = Convert.ToInt32(Console.ReadLine());
-                                Book b1 = new Book
+                                int year = Convert.ToInt32(Console.ReadLine());
+
+                                Book newBook = new Book
                                 {
-                                    Title = bookName,
+                                    Title = title,
                                     Author = author,
-                                    PublishYear = bookYear
+                                    PublishYear = year
                                 };
-                                l1.AddBook(b1, library);
+
+                                librarian.AddBook(newBook, library);
                                 break;
 
                             case 'R':
-                                Console.WriteLine("enter book details to remove");
-                                bookName = Console.ReadLine();
+                                Console.WriteLine("Enter book details to remove: ");
+                                title = Console.ReadLine();
                                 author = Console.ReadLine();
-                                bookYear = Convert.ToInt32(Console.ReadLine());
-                                b1 = new Book
+                                year = Convert.ToInt32(Console.ReadLine());
+
+                                Book bookToRemove = new Book
                                 {
-                                    Title = bookName,
+                                    Title = title,
                                     Author = author,
-                                    PublishYear = bookYear
+                                    PublishYear = year
                                 };
-                                l1.RemoveBook(b1, library);
+
+                                librarian.RemoveBook(bookToRemove, library);
                                 break;
 
                             case 'D':
-                                Console.WriteLine("the book list : ");
-                                l1.Display(library);
+                                Console.WriteLine("The book list: ");
+                                librarian.Display(library);
                                 break;
 
                             case 'B':
@@ -71,39 +75,40 @@
                 }
                 else if (userType == 'R')
                 {
-                    Console.Write(" what is your name ? :  ");
-                    string regularname = Console.ReadLine();
-                    RegularUser u1 = new RegularUser(regularname);
-                    Console.WriteLine($"welcome ya {u1.Name}");
+                    Console.Write("What is your name? : ");
+                    string regularName = Console.ReadLine();
+                    RegularUser user = new RegularUser(regularName);
+                    Console.WriteLine($"Welcome, {user.Name}!");
 
-                    while (true) // RegularUser loop
+                    while (true) // Regular User loop
                     {
-                        Console.Write(" Borrow (B) , Display books (D) , to back and choose role again (K): ");
+                        Console.Write("Borrow (B), Display books (D), Back (K): ");
                         char choice = Console.ReadLine().ToUpper()[0];
 
                         switch (choice)
                         {
                             case 'B':
-                                Console.WriteLine("enter book details");
-                                string bookName = Console.ReadLine();
+                                Console.WriteLine("Enter book details: ");
+                                string title = Console.ReadLine();
                                 string author = Console.ReadLine();
-                                int bookYear = Convert.ToInt32(Console.ReadLine());
-                                Book b1 = new Book
+                                int year = Convert.ToInt32(Console.ReadLine());
+
+                                Book bookToBorrow = new Book
                                 {
-                                    Title = bookName,
+                                    Title = title,
                                     Author = author,
-                                    PublishYear = bookYear
+                                    PublishYear = year
                                 };
-                                u1.Borrow(b1, library);
+
+                                user.Borrow(bookToBorrow, library);
                                 break;
 
                             case 'D':
-                                Console.WriteLine("the book list : ");
-                                u1.Display(library);
+                                Console.WriteLine("The book list: ");
+                                user.Display(library);
                                 break;
 
                             case 'K':
-                                // هنا هنكسر اللوب بتاعت اليوزر
                                 goto EndUser;
 
                             default:
@@ -116,11 +121,11 @@
                 else if (userType == 'E')
                 {
                     Console.WriteLine("Goodbye!");
-                    break; 
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("invalid input");
+                    Console.WriteLine("Invalid input");
                 }
             }
         }
