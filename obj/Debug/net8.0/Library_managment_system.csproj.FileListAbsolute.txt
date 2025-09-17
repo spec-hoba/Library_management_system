@@ -1,0 +1,15 @@
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\bin\Debug\net8.0\Library_managment_system.exe
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\bin\Debug\net8.0\Library_managment_system.deps.json
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\bin\Debug\net8.0\Library_managment_system.runtimeconfig.json
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\bin\Debug\net8.0\Library_managment_system.dll
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\bin\Debug\net8.0\Library_managment_system.pdb
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.AssemblyInfoInputs.cache
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.AssemblyInfo.cs
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.csproj.CoreCompileInputs.cache
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.dll
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\refint\Library_managment_system.dll
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.pdb
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.genruntimeconfig.cache
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\ref\Library_managment_system.dll
+C:\Users\Mohab Mohammed\source\repos\OOP\Library\obj\Debug\net8.0\Library_managment_system.sourcelink.json
