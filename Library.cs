@@ -13,8 +13,15 @@ namespace Library
 
         public void Add(Book book)
         {
-            books.Add(book);
-            Console.WriteLine("Book added successfully");
+            if (books.Contains(book))
+            {
+                Console.WriteLine("This book already exists in the library");
+            }
+            else
+            {
+                books.Add(book);
+                Console.WriteLine("Book added successfully");
+            }
         }
 
         public void Remove(Book book)
